@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assignment 5 · JavaScript &amp; DOM</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Assignment 5 · JavaScript &amp; DOM</h1>
+  <nav><a href="#t1">Task 1</a><a href="#t2">Task 2</a><a href="#t3">Task 3</a></nav>
+</header>
+<main>
+
+<section id="t1" class="card">
+  <h2>Task 1 · Higher or Lower</h2>
+  <p>Is the price of the next gadget higher or lower? Equal prices count as a right guess.</p>
+  <div class="stats">
+    <span>Lives: <b id="lives"></b></span>
+    <span>Streak: <b id="streak"></b></span>
+    <span>Best: <b id="best"></b></span>
+  </div>
+  <div class="duel">
+    <div class="item"><h3 id="curName"></h3><p id="curPrice"></p></div>
+    <div class="vs">VS</div>
+    <div class="item"><h3 id="nextName"></h3><p id="nextPrice">?</p></div>
+  </div>
+  <div class="row" id="gameButtons">
+    <button type="button" data-guess="higher">Higher ▲</button>
+    <button type="button" data-guess="lower">Lower ▼</button>
+    <button type="button" id="restart" class="secondary">Restart</button>
+  </div>
+  <p id="gameMsg" class="msg" role="status"></p>
+</section>
+
+<section id="t2" class="card">
+  <h2>Task 2 · Kanban board</h2>
+  <div class="toolbar">
+    <input id="search" type="search" placeholder="Search cards…" aria-label="Search cards">
+    <select id="tagFilter" aria-label="Filter by tag"></select>
+    <select id="sortBy" aria-label="Sort by priority">
+      <option value="none">No sorting</option>
+      <option value="high">Priority: high first</option>
+      <option value="low">Priority: low first</option>
+    </select>
+  </div>
+  <label class="progress-label" for="bar">Finished cards: <b id="percent"></b></label>
+  <progress id="bar" max="100" value="0"></progress>
+  <p id="stats" class="small"></p>
+  <p id="boardMsg" class="msg" role="status"></p>
+  <p id="notFound" class="msg error" hidden>Nothing found. Change the search or the tag filter.</p>
+  <div id="board" class="board"></div>
+  <form id="addForm" class="inline" novalidate>
+    <input id="newTitle" type="text" placeholder="New card title" aria-label="New card title" maxlength="40">
+    <select id="newTag" aria-label="Tag of the new card"></select>
+    <select id="newPrio" aria-label="Priority of the new card"></select>
+    <button type="submit">Add card</button>
+  </form>
+</section>
+
+<section id="t3" class="card">
+  <h2>Task 3 · Ticket builder</h2>
+  <div class="split">
+    <form id="ticketForm" novalidate>
+      <div id="summary" class="msg error" role="alert" tabindex="-1" hidden></div>
+      <div class="field"><label for="event">Event</label>
+        <select id="event" name="event" required aria-describedby="err-event"></select>
+        <small id="err-event" class="err"></small></div>
+      <div class="field"><label for="date">Date</label>
+        <input id="date" name="date" type="date" required aria-describedby="err-date">
+        <small id="err-date" class="err"></small></div>
+      <div class="field"><label for="type">Ticket type</label>
+        <select id="type" name="type" required aria-describedby="err-type"></select>
+        <small id="err-type" class="err"></small></div>
+      <div class="field"><label for="quantity">Quantity (1–10)</label>
+        <input id="quantity" name="quantity" type="number" min="1" max="10" step="1" required aria-describedby="err-quantity">
+        <small id="err-quantity" class="err"></small></div>
+      <div class="field"><label for="name">Full name</label>
+        <input id="name" name="name" type="text" required minlength="2" autocomplete="name" aria-describedby="err-name">
+        <small id="err-name" class="err"></small></div>
+      <div class="field"><label for="email">Email</label>
+        <input id="email" name="email" type="email" required autocomplete="email" aria-describedby="err-email">
+        <small id="err-email" class="err"></small></div>
+      <div class="field"><label for="promo">Promo code (optional)</label>
+        <input id="promo" name="promo" type="text" maxlength="12" aria-describedby="err-promo">
+        <small id="err-promo" class="err"></small></div>
+      <p id="seatHint" class="small"></p>
+      <button type="submit">Buy ticket</button>
+    </form>
+    <aside class="preview" aria-live="polite">
+      <h3>Live preview</h3>
+      <dl>
+        <dt>Event</dt><dd id="pvEvent"></dd>
+        <dt>Date</dt><dd id="pvDate"></dd>
+        <dt>Type</dt><dd id="pvType"></dd>
+        <dt>Quantity</dt><dd id="pvQty"></dd>
+        <dt>Name</dt><dd id="pvName"></dd>
+        <dt>Total</dt><dd id="pvTotal"></dd>
+      </dl>
+    </aside>
+  </div>
+  <p id="success" class="msg win" role="status" hidden></p>
+  <div id="tickets" class="tickets"></div>
+</section>
+
+</main>
+<script src="task1.js" defer></script>
+<script src="task2.js" defer></script>
+<script src="task3.js" defer></script>
+</body>
+</html>
